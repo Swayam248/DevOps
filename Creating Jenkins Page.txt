@@ -1,0 +1,25 @@
+------------------Creating Jenkins page through an instance in CLI--------------------------
+
+
+# sudo su -
+root# yum update -y
+root# yum install wget -y
+
+//go to Jenkins in AWS page...and paste below lines
+
+root# wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/redhat-stable/jenkins.repo
+root# rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+root# yum upgrade
+root# yum install java-21-amazon-corretto -y
+root# yum install jenkins -y
+root# systemctl enable Jenkins
+root# systemctl start Jenkins
+
+//go to instance's security group -> add inbound rules -> add Custom TCP - 8080  - 0/0/0/0:0 -> add
+//copy instance's public ip -> paste:8080 -> will get a page of Jenkins with log file's directory 
+//password has been written to log file to ensure Jenkins is securely setup by the administrator
+//copy that path
+
+root# cat /paste
+ 
+//will get password -> copy and paste in Jenkins page -> login successfull
